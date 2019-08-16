@@ -72,7 +72,6 @@ app.post('/login', (req, res) => {
     .then(data => {
       session.token = data
       console.log(session)
-      //res.render('welcome.html.ejs')
       res.redirect('/')
     })
     .catch(err => {
@@ -105,6 +104,7 @@ app.get('/accounts', (req, res) => {
       // console.log(data);
       res.render('accounts.html.ejs', { data: data })
     })
+
     .catch(err => {
       res.status(500).json({
         "message": "error"
@@ -136,9 +136,7 @@ app.post('/createinvoices', (req, res) => {
         "message": "error"
       })
     })
-
 })
-
 
 app.get('/transfers', (req, res) => {
   const who = 'yemane'
@@ -148,13 +146,6 @@ app.get('/transfers', (req, res) => {
     }).catch(err => {
       console.log(err)
     })
-
-  // .catch(err=>{
-  //   res.status(500).json({
-  //     message:'trans error'
-  //   })
-  // })
-
 })
 
 app.get('/crttransfer', (req, res) => {
@@ -181,21 +172,19 @@ app.post('/createtransfer', (req, res) => {
       then((data) => {
         let transfer_id = []
         transfer_id.push(data.id)
-        // console.log(data)
-        console.log(data)
-        HelloCash.authorizeTransfer(transfer_id, tok).then(data => {
-          res.render("transfercrted.html.ejs", { data: data })
-          console.log(data)
-        }).catch(err => {
-          console.log("error", err)
-        })
 
+        // console.log(data)
+        HelloCash.authorizeTransfer(transfer_id, tok)
+          .then(data => {
+            res.render("transfercrted.html.ejs", { data: data })
+            console.log(data)
+          }).catch(err => {
+            console.log("error", err)
+          })
       }).catch(err => {
         console.log("error", err)
       })
   })
-
-
 })
 app.get('/logout', (req, res) => {
   req.session = null// destroying the session
