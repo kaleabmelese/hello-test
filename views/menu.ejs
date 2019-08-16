@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <style>
+            a{
+                display: block;
+                
+            }
+        
+        </style>
+    </head>
+
+<body>
+    <div>
+       <div>
+            <a href="/"> Home</a>
+            <% if(session && session.token) { %>
+            <%- link_to("Logout", "/logout") %>
+
+            <a  href='/invoices'>Invoices</a>   
+            <a  href='/accounts'>Accounts</a>  
+            <a  href='/createinvoice'>createinvoices</a> 
+            <a  href='/transfers' >transfers</a>
+            <a  href='/crttransfer'>Create Transfer</a>
+
+
+            <% }else {  %>
+            <%- link_to("Login", "/login") %>
+            <% } %>
+        </div>  
+    </div>
+</body>
+
+</html>
+

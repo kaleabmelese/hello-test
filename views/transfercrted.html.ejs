@@ -1,0 +1,21 @@
+
+<html>
+    <head>
+        <style>
+            .transfers{
+                display: block;
+            }
+        </style>
+    </head>
+    
+    <div class="transfers">
+      
+        <%Object.keys(data).forEach(key=>{%>
+            <div class="block"><%=key%> : <%=data[key]%></div>
+        <% })%>
+            <br><br>
+    
+    
+    </div>
+    
+    </html>

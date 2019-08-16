@@ -1,0 +1,9 @@
+<!-- <%if(data){%>
+    <%-JSON.stringify(data)%>
+    <%}else{%>
+    <p>there is no data sent</p>
+    <%}%>
+     -->
+    <%Object.keys(data).forEach(key=>{%>
+        <div class="block"><%=key%> : <%=data[key]%></div>
+    <% })%>

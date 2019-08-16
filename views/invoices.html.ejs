@@ -1,0 +1,20 @@
+<html>
+        <head>
+            <style>
+                .invoices{
+                    display: block;
+                }
+            </style>
+        </head>
+       
+        <div class="invoices">
+                <%data.forEach((element)=>{%>
+                    <%Object.keys(element).forEach(key=>{%>
+                        <div class="block"><%=key%> : <%=element[key]%></div>
+                    <% })%>
+                    <br><br>
+            
+                <%})%>
+        </div>
+
+</html>
